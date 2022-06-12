@@ -19,6 +19,12 @@ class TestPointInPolygon:
         polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
         assert point_in_polygon(point, polygon)
 
+    def test_point_on_rectangle2(self):
+        """点在矩形边上"""
+        point = [1, 0]
+        polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
+        assert point_in_polygon(point, polygon)
+
     def test_point_on_vertex(self):
         """点在矩形顶点上"""
         point = [0, 0]
@@ -54,6 +60,12 @@ class TestPointInPolygon:
         point = [1, -0.5]
         polygon = [[0, 0], [2, -2], [-2, -2]]
         assert point_in_polygon(point, polygon) == False
+    
+    def test_point_on_vertex_of_triangle(self):
+        """点在三角形顶点上"""
+        point = [0, 0]
+        polygon = [[0, 0], [2, -2], [-2, -2]]
+        assert point_in_polygon(point, polygon)
 
     def test_point_in_polygon(self):
         """点在五边形内部"""
