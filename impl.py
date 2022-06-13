@@ -34,15 +34,14 @@ def point_in_polygon(point, polygon):
             continue
 
         if y1 == y2:
-            if y == y1:
-                if x > min(x1, x2) and x < max(x1, x2):
-                    logger.debug(
-                        f"点在第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]上，属于内部。")
-                    return True
-                else:
-                    logger.debug(
-                        f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]与延长线有重叠，但是点在边外部，忽略。")
-                continue
+            if x > min(x1, x2) and x < max(x1, x2):
+                logger.debug(
+                    f"点在第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]上，属于内部。")
+                return True
+            else:
+                logger.debug(
+                    f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]与延长线有重叠，但是点在边外部，忽略。")
+            continue
 
         # 求交点
         _x = (x1 - x2) / (y1 - y2) * (y - y2) + x2
