@@ -33,6 +33,7 @@ def point_in_polygon(point, polygon):
             logger.debug(f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]在延长线下方，忽略。")
             continue
 
+        # 线段与延长线平行且重叠
         if y1 == y2:
             if x > min(x1, x2) and x < max(x1, x2):
                 logger.debug(
@@ -43,8 +44,10 @@ def point_in_polygon(point, polygon):
                     f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]与延长线有重叠，但是点在边外部，忽略。")
             continue
 
-        # 求交点
+        # 线段与延长线不平行，尝试求解交点
         _x = (x1 - x2) / (y1 - y2) * (y - y2) + x2
+
+        # 待测点与交点重合，即点在边上
         if _x == x:
             logger.debug(f"点在第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]上，属于内部。")
             return True
@@ -53,13 +56,7 @@ def point_in_polygon(point, polygon):
             logger.debug(f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]与延长线无交点，忽略。")
             continue
 
-        # 以下部分：_x > x
-        if y == min(y1, y2):
-            intersection_count += 1
-            logger.debug(
-                f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]上端与延长线相交[{_x}, {y}]，+1。")
-            continue
-
+        # 以下部分隐含条件_x > x，必然存在交点
         if y == max(y1, y2):
             logger.debug(
                 f"第{index}条边[[{x1}, {y1}], [{x2}, {y2}]]下端与射线存在交点[{_x}, {y}]，但是需要忽略。")
