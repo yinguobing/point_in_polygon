@@ -14,14 +14,20 @@ class TestPointInPolygon:
         assert point_in_polygon(point, polygon)
 
     def test_point_on_rectangle(self):
-        """点在矩形边上"""
+        """点在矩形左侧边上"""
         point = [0, 1]
         polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
         assert point_in_polygon(point, polygon)
 
     def test_point_on_rectangle2(self):
-        """点在矩形边上"""
+        """点在矩形上侧边上"""
         point = [1, 0]
+        polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
+        assert point_in_polygon(point, polygon)
+    
+    def test_point_on_rectangle3(self):
+        """点在矩形下侧边上"""
+        point = [1, 2]
         polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
         assert point_in_polygon(point, polygon)
 
