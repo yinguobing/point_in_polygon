@@ -32,8 +32,14 @@ class TestPointInPolygon:
         assert point_in_polygon(point, polygon)
 
     def test_point_on_vertex(self):
-        """点在矩形顶点上"""
+        """点在矩形左上顶点上"""
         point = [0, 0]
+        polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
+        assert point_in_polygon(point, polygon)
+    
+    def test_point_on_vertex(self):
+        """点在矩形左下顶点上"""
+        point = [0, 2]
         polygon = [[0, 0], [2, 0], [2, 2], [0, 2]]
         assert point_in_polygon(point, polygon)
 
