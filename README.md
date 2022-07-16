@@ -1,4 +1,7 @@
 # Point in Polygon
+
+[![Python application](https://github.com/yinguobing/point_in_polygon/actions/workflows/python-app.yml/badge.svg)](https://github.com/yinguobing/point_in_polygon/actions/workflows/python-app.yml)
+
 Check if a point is within a polygon, implemented in Python.
 
 There are many algtorithms could resolve this problem. This demo is based on the [Ray Casting algorithm](https://en.wikipedia.org/wiki/Point_in_polygon), which was intruduced as early as 1962 by Shimrat, M..
